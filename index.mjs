@@ -1,7 +1,6 @@
 import inquirer from "inquirer";
-//Import inquirer and fs (file system)
-
 import fs from "fs/promises";
+//Import inquirer and fs (file system)
 
 
 let {projectTitle,
@@ -36,29 +35,30 @@ let {projectTitle,
             message: "Provide instructions on how to use the product.",
          },
          {
-            type: 'input',
+            type: 'list',
             name: 'projectLicense',
-            message: "What's a description of your project:",
+            message: "Choose the appropriate license from the following:",
+            choices: ["MIT License", "ISC", "MOZILLA", "Apache License 2.0"],
          },
          {
             type: 'input',
             name: 'projectContribution',
-            message: "What's a description of your project:",
+            message: "Explain how to contribute to the project:",
          },
          {
             type: 'input',
             name: 'projectTest',
-            message: "What's a description of your project:",
+            message: "Explain how to run any test for the project:",
          },
          {
             type: 'input',
             name: 'projectQuestionsViaGithub',
-            message: "What's a description of your project:",
+            message: "Please paste the link to your Github profile:",
          },
          {
             type: 'input',
             name: 'projectQuestionsViaEmail',
-            message: "What's a description of your project:",
+            message: "Input your contact email address:",
          },
          /* {
              type: 'list',
@@ -72,6 +72,26 @@ let {projectTitle,
          }, */
      ])
 
+     let licenseBadge = "";
+     switch (projectLicense) {
+       case "MIT License":
+         licenseBadge =
+           "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+         break;
+       case "Apache License 2.0":
+         licenseBadge =
+           "[![License](https://img.shields.io/badge/License-Apache_2.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)";
+         break;
+       case "ISC":
+         licenseBadge =
+           "[![License: ICL](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)";
+         break;
+       case "Mozilla":
+         licenseBadge =
+           "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)";
+         break;
+     }
+
 
  let readmeText =
 
@@ -82,12 +102,12 @@ let {projectTitle,
  ${projectDescription}
 
  ## Table of Contents
- * [Installation](#Installation)
- * [Usage](#projectUsage)
- * [License](#project)
- * []()
- * []()
- * []()
+ * [Installation](#installation)
+ * [Usage](#usage)
+ * [License](#license)
+ * [Contribution](#contribution)
+ * [Test](#test)
+ * [Questions](#Questions)
 
  ## Installation
  ${projectInstallation}
@@ -105,8 +125,8 @@ let {projectTitle,
  ${projectTest}
 
  ## Questions
- ${projectQuestionsViaGithub}
- ${projectQuestionsViaEmail}
+ Feel free to explore my Github profile further at ${projectQuestionsViaGithub}.
+ My email address is ${projectQuestionsViaEmail}, feel free to contact me with any questions you may have!
 
  ####
 
@@ -118,16 +138,16 @@ let {projectTitle,
 
  await fs.writeFile('README.md', readmeText);
     
-
+/* 
     fs.writeFile("README.md",readmeText )
     
     function generateLicence(license){
 
-        if(license === "Jumbo"){
+        if(license === "MIT"){
 
             return "[![License]()"
         }
 
 
-
-    }
+ */
+   /*  } */
