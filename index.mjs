@@ -1,22 +1,49 @@
 import inquirer from "inquirer";
+import fs from "fs/promises";
 
-let response = await inquirer
-    .prompt([
-        {
-            type: 'input',
-            name: 'first_name',
-            message: "What's your first name?",
-        },
-        {
-            type: 'input',
-            name: 'last_name',
-            message: "What's your last name?",
-            default() {
-                return 'Doe';
-            },
-        },
 
-        //pass your questions in here
-    ])
+let {description, size} = await inquirer
+     .prompt([
+         {
+             type: 'input',
+             name: 'description',
+             message: "What's a description of your project:",
+         },
+         {
+             type: 'list',
+             name: 'size',
+             message: 'What size do you need?',
+             choices: ['Jumbo', 'Large', 'Standard', 'Medium', 'Small', 'Micro'],
+             filter(val) {
+                return val.toLoverCase();
+             },
+            
+         },
+     ])
 
-    console.log(response);
+ let readmeText = `# Project Description
+ ${description}
+
+ ## The second largest heading
+
+ ${generateLicence(size)}
+ 
+
+ ##### The smallest heading
+ `
+
+ await fs.writeFile('README.md', readmeData);
+    
+
+    fs.writeFile("README.md",readmeText )
+    
+    function generateLicence(license){
+
+        if(license === "Jumbo"){
+
+            return "[![License]()"
+        }
+
+
+
+    }
