@@ -129,14 +129,12 @@ let {projectTitle,
  My email address is ${projectQuestionsViaEmail}, feel free to contact me with any questions you may have!
 
  ####
-
-
-
- ${generateLicence(size)}
  `
 
 
  await fs.writeFile('README.md', readmeText);
+
+ console.log('Enjoy your new README! :)')
     
 /* 
     fs.writeFile("README.md",readmeText )
