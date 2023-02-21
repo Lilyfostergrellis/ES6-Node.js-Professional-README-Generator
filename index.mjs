@@ -1,15 +1,66 @@
 import inquirer from "inquirer";
+//Import inquirer and fs (file system)
+
 import fs from "fs/promises";
 
 
-let {description, size} = await inquirer
+let {projectTitle,
+     projectDescription,
+     projectInstallation,
+     projectUsage,
+     projectLicense,
+     projectContribution,
+     projectTest,
+     projectQuestionsViaGithub,
+     projectQuestionsViaEmail,
+    } = await inquirer
      .prompt([
          {
              type: 'input',
-             name: 'description',
-             message: "What's a description of your project:",
+             name: 'projectTitle',
+             message: "What's the name of your project?",
          },
          {
+            type: 'input',
+            name: 'projectDescription',
+            message: "What's a description of your project:",
+         },
+         {
+            type: 'input',
+            name: 'projectInstallation',
+            message: "Describe how to install and set up the project.",
+         },
+         {
+            type: 'input',
+            name: 'projectUsage',
+            message: "Provide instructions on how to use the product.",
+         },
+         {
+            type: 'input',
+            name: 'projectLicense',
+            message: "What's a description of your project:",
+         },
+         {
+            type: 'input',
+            name: 'projectContribution',
+            message: "What's a description of your project:",
+         },
+         {
+            type: 'input',
+            name: 'projectTest',
+            message: "What's a description of your project:",
+         },
+         {
+            type: 'input',
+            name: 'projectQuestionsViaGithub',
+            message: "What's a description of your project:",
+         },
+         {
+            type: 'input',
+            name: 'projectQuestionsViaEmail',
+            message: "What's a description of your project:",
+         },
+         /* {
              type: 'list',
              name: 'size',
              message: 'What size do you need?',
@@ -18,21 +69,54 @@ let {description, size} = await inquirer
                 return val.toLoverCase();
              },
             
-         },
+         }, */
      ])
 
- let readmeText = `# Project Description
- ${description}
 
- ## The second largest heading
+ let readmeText =
+
+ `# Project Title
+ ${projectTitle}
+
+ ## Project Description
+ ${projectDescription}
+
+ ## Table of Contents
+ * [Installation](#Installation)
+ * [Usage](#projectUsage)
+ * [License](#project)
+ * []()
+ * []()
+ * []()
+
+ ## Installation
+ ${projectInstallation}
+
+ ## Usage
+ ${projectUsage}
+
+ ## License
+ ${projectLicense}
+
+ ## Contribution
+ ${projectContribution}
+
+ ## Test
+ ${projectTest}
+
+ ## Questions
+ ${projectQuestionsViaGithub}
+ ${projectQuestionsViaEmail}
+
+ ####
+
+
 
  ${generateLicence(size)}
- 
-
- ##### The smallest heading
  `
 
- await fs.writeFile('README.md', readmeData);
+
+ await fs.writeFile('README.md', readmeText);
     
 
     fs.writeFile("README.md",readmeText )
