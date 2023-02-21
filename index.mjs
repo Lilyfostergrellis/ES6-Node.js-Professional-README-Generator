@@ -72,6 +72,9 @@ let {projectTitle,
          }, */
      ])
 
+
+
+     function generateLicenceBadge(projectLicense) {
      let licenseBadge = "";
      switch (projectLicense) {
        case "MIT License":
@@ -91,6 +94,8 @@ let {projectTitle,
            "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)";
          break;
      }
+     return licenseBadge
+    }
 
 
  let readmeText =
@@ -128,13 +133,14 @@ let {projectTitle,
  Feel free to explore my Github profile further at ${projectQuestionsViaGithub}.
  My email address is ${projectQuestionsViaEmail}, feel free to contact me with any questions you may have!
 
- ####
  `
 
 
  await fs.writeFile('README.md', readmeText);
 
  console.log('Enjoy your new README! :)')
+// Message to the user when the program has finished. 
+
     
 /* 
     fs.writeFile("README.md",readmeText )
