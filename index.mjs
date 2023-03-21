@@ -140,18 +140,3 @@ let {projectTitle,
 
  console.log('Enjoy your new README! :)')
 // Message to the user when the program has finished. 
-
-    
-/* 
-    fs.writeFile("README.md",readmeText )
-    
-    function generateLicence(license){
-
-        if(license === "MIT"){
-
-            return "[![License]()"
-        }
-
-
- */
-   /*  } */
